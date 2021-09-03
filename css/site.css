@@ -1,0 +1,90 @@
+:root{
+   --primary-color: #225279;
+   --secondary-color: #ff993b;
+   --dark-color: #292929;
+   --white-color: #dff3e4;   
+}
+
+body{
+   color: var(--dark-color);
+}
+
+nav{
+   background-color: var(--dark-color);
+}
+
+footer{
+   position: fixed;
+   width: 100%;
+   left: 0;
+   bottom: 0;
+   color: var(--white-color);
+   background-color: var(--primary-color);
+   /* border-style: dashed; */
+}
+
+h1,h2,h3,h4,h5,h6{
+   color:var(--primary-color);
+}
+
+main>.container {
+   padding: 60px 15px 0;
+   margin-bottom: 5rem;
+}
+.sticky-nav {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100% ;
+}
+
+#toucan1{
+   width: 100px; 
+   transform: scaleX(-1);
+}
+
+#toucan2{
+   width: 100px;  
+}
+
+
+footer .social>a:hover{
+   color: red;   
+}
+
+footer .social:hover{
+   transform: scale(1.2);
+}
+
+#footer-logo-div{
+   margin-bottom: -15px;
+   margin-top: -15px;
+}
+
+.bsicon{
+   color:purple;
+}
+
+.jsicon{
+   color:rgb(226,211,4)
+}
+
+.cssicon{
+   color: rgb(122,82,214)
+}
+
+.html5icon{
+   color: orangered;
+}
+.checklist > li i{
+   color: green;
+}
+
+/* prism boilerplate */
+code[class*="language-"],
+pre[class*="language-"] {
+white-space: pre-wrap;
+word-break: break-all;
+word-wrap: break-word;
+}
+
