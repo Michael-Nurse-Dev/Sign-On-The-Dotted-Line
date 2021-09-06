@@ -111,6 +111,15 @@ footer .social:hover{
    font-family: 'Codystar', cursive
 }
 
+#logoText{
+   font-family: 'Codystar', cursive
+}
+
+#logoImage{
+   position: absolute;
+   left: 252px;
+}
+
 /* prism boilerplate */
 code[class*="language-"],
 pre[class*="language-"] {
