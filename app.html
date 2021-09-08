@@ -15,45 +15,62 @@
      <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column">
 
    <!-- ==== Nav section==== -->
-   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-      <div class="container-fluid">
-         <img src="img/logo.png" alt="Logo" class="d-inline-block align-text-top" height="40px">
-         <a class="navbar-brand" href="#">App$$$Name</a>
-         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-               aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarCollapse">
-               <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                  <li class="nav-item">
-                     <a class="nav-link" href="index.html">Home</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="app.html">The App</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="code.html">The Code</a>
-                  </li>
-                  <li class="nav-item">
-                     <!-- Link target to portfolio -->
-                     <a class="nav-link" target="_blank" href="#">About</a>
-                  </li>
-                  <li class="nav-item">
-                     <!-- Link target to portfolio -->
-                     <a class="nav-link" target="_blank" href="#">Github</a>
-                  </li>
-
-               </ul>
-         </div>
-      </div>
-   </nav>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+   <div class="container-fluid">
+       <a class="navbar-brand" href="#" id="logoText">Sign on the Dotted Line</a>
+       <img id="logoImage" src="img/Logo.svg" alt="Logo" class="d-inline-block align-text-top" height="45px">
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarCollapse">
+           <ul class="navbar-nav me-auto ms-3 mb-2 mb-md-0">
+               <li class="nav-item">
+                   <a class="nav-link" href="index.html">Home</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" href="app.html">The App</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="code.html">The Code</a>
+               </li>
+               <li class="nav-item">
+                  <!-- Link target to portfolio -->
+                   <a class="nav-link" target="_blank" href="#">About</a>
+               </li>
+               <li class="nav-item">
+                 <!-- Link target to portfolio -->
+                  <a class="nav-link" target="_blank" href="#">Github</a>
+              </li>
+           </ul>
+       </div>
+   </div>
+</nav>
 
    <!-- ==== Main section ==== -->
    <main class="flex-shrink-0">
-      <div class="container">Container Here</div>
+      <div class="container">
+         <h1 class="my-3 fw-bold display-4" id="heroText">Mortgage Comparison App</h1>
+         <h5>Enter the names of the two mortgage options you wish to compare</h5>
+         <div class="row row-cols-1 row-cols-lg-2">
+               <div class="col">
+                  <div class="form-group"></div>
+                  <label for=""></label>
+                  <input type="text" class="form-control" name="mortgageOption1Name" id="mortgageOption1" aria-describedby="helpId" placeholder="enter a name for your preferred mortgage option">
+                  <small id="helpId" class="ps-1 form-text text-muted">e.g. Buy now</small>
+               </div>
+               <div class="col">
+                  <div class="form-group"></div>
+                  <label for=""></label>
+                  <input type="text" class="form-control" name="mortgageOption2Name" id="mortgageOption2" aria-describedby="helpId" placeholder="enter a name for an alternative mortgage option">
+                  <small id="helpId" class="ps-1 form-text text-muted">e.g. Save and buy in five years</small>
+               </div>
+            </div>
+         </div>
+      </div>
    </main>
 
    <!-- ==== Footer section ==== -->
@@ -84,11 +101,7 @@
                <div class="col social"><a href="https://twitter.com/MichaelNurseDev" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                <div class="col social"><a href="https://www.youtube.com/channel/UCo5PATNyBA_MGN3FPTK5CBg" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></div>
                <div class="col-1 col-md-2 col-lg-3 col-xl-4"></div>
-            </div>
-
-
-      
-         
+            </div>    
             
       </div>
    </footer>

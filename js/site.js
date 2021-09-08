@@ -62,4 +62,5 @@ class Mortgage{
    inflationLongTermExpectation = 0.00;
 }
 
-mortgageCreate = new Mortgage();
+m = new Mortgage();
+// alert(m.mortgageOption);
