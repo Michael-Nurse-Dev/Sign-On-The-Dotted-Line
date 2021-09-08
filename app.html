@@ -13,6 +13,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">   
      <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
      <link rel="stylesheet" href="css/site.css">
+     <link rel="stylesheet" href="css/appPage.css">
 </head>
 
 <body class="d-flex flex-column">
@@ -52,30 +53,113 @@
 
    <!-- ==== Main section ==== -->
    <main class="flex-shrink-0">
-      <div class="container">
+      <div id="appPageContainer" class="container">
          <h1 class="my-3 fw-bold display-4" id="heroText">Mortgage Comparison App</h1>
-         <h5>Enter the names of the two mortgage options you wish to compare</h5>
+         <h5>Enter the titles of the two mortgage options you wish to compare</h5>
+         
+         <!-- Main Content Grid-->
          <div class="row row-cols-1 row-cols-lg-2">
-               <div class="col">
-                  <div class="form-group"></div>
-                  <label for=""></label>
-                  <input type="text" class="form-control" name="mortgageOption1Name" id="mortgageOption1" aria-describedby="helpId" placeholder="enter a name for your preferred mortgage option">
-                  <small id="helpId" class="ps-1 form-text text-muted">e.g. Buy now</small>
-               </div>
-               <div class="col">
-                  <div class="form-group"></div>
-                  <label for=""></label>
-                  <input type="text" class="form-control" name="mortgageOption2Name" id="mortgageOption2" aria-describedby="helpId" placeholder="enter a name for an alternative mortgage option">
-                  <small id="helpId" class="ps-1 form-text text-muted">e.g. Save and buy in five years</small>
-               </div>
+            <div class="col-12 col-lg-6">
+               <h3 class="text-center border-1 border-bottom border-top border-dark py-1 subHeading option my-3">Option 1</h3>
+               
+               <!-- Accordian start -->
+               <div class="accordion" id="accordionOption1">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button id="title1" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneO1" aria-expanded="true" aria-controls="collapseOneO1">
+                        Title
+                      </button>
+                    </h2>
+                    <div id="collapseOneO1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOption1">
+                      <div class="accordion-body">                                 
+                        <div class="form-group"></div>
+                        <input type="text" class="form-control" onblur="getTitleMortgageOption1()" name="mortgageOption1Name" id="mortgageOption1" aria-describedby="helpId" placeholder="enter a title for your preferred mortgage option">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO1" aria-expanded="false" aria-controls="collapseTwoO1">
+                        Required inputs
+                      </button>
+                    </h2>
+                    <div id="collapseTwoO1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOption1">
+                      <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeO1" aria-expanded="false" aria-controls="collapseThreeO1">
+                        Accordion Item #3
+                      </button>
+                    </h2>
+                    <div id="collapseThreeO1" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionOption1">
+                      <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               <!-- Accordian end -->
+
             </div>
+            <div class="col-12 col-lg-6">
+               <h3 class="text-center border-1 border-bottom border-top border-dark py-1 subHeading option my-3">Option 2</h3>
+               
+               <!-- Accordian start -->
+               <div class="accordion" id="accordionOption2">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button id="title2" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneO2" aria-expanded="true" aria-controls="collapseOneO2">
+                        Title
+                      </button>
+                    </h2>
+                    <div id="collapseOneO2" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOption2">
+                      <div class="accordion-body">
+                        <div class="form-group"></div>
+                        <input type="text" onblur="getTitleMortgageOption2()" class="form-control" name="mortgageOption2Name" id="mortgageOption2" aria-describedby="helpId" placeholder="enter a title for an alternative mortgage option">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO2" aria-expanded="false" aria-controls="collapseTwoO2">
+                        Required inputs
+                      </button>
+                    </h2>
+                    <div id="collapseTwoO2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOption2">
+                      <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeO2" aria-expanded="false" aria-controls="collapseThreeO2">
+                        Accordion Item #3
+                      </button>
+                    </h2>
+                    <div id="collapseThreeO2" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionOption2">
+                      <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               <!-- Accordian end --> 
+
+            </div>            
          </div>
-      </div>
+         <!-- End of Main Content Grid-->
+      </div>      
    </main>
 
-   <!-- ==== Footer section ==== -->
-   <footer class="footer mt-auto py-3">
-      <div class="container-fluid text-center" id="footer-hand-crafted">
+   <!-- ==== Footer section ==== -->   
+      <div class="container-fluid text-center" id="footer-hand-crafted-app-page">
             <div class="row">                 
             <span class="text-lite">Hand crafted with care by</span>
             </div>
@@ -101,10 +185,11 @@
                <div class="col social"><a href="https://twitter.com/MichaelNurseDev" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                <div class="col social"><a href="https://www.youtube.com/channel/UCo5PATNyBA_MGN3FPTK5CBg" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></div>
                <div class="col-1 col-md-2 col-lg-3 col-xl-4"></div>
-            </div>    
+            </div>              
+
             
       </div>
-   </footer>
+
 
    <!-- Bootstrap JS -->
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -114,6 +199,14 @@
        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
    </script>
    <script src="js/site.js"></script>
+
+   <!-- Event listeners  -->
+   <!-- <script>
+      document.getElementById("mortgageOption1").addEventListener("onblur", getTitleMortgageOption1);
+   </script> -->
+
+
+
 
 </body>
 </html>

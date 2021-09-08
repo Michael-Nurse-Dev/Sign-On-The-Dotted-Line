@@ -62,5 +62,35 @@ class Mortgage{
    inflationLongTermExpectation = 0.00;
 }
 
-m = new Mortgage();
-// alert(m.mortgageOption);
+// There are two mortgage options
+// We will call them m1 and m2 to keep code short.
+m1 = new Mortgage();
+m2 = new Mortgage();
+
+function getTitleMortgageOption1(){
+   input = mortgageOption1.value; 
+   
+   if(input !== null && input !== '') {
+      m1.Mortgage = input;
+      document.getElementById("mortgageOption1").value = m1.Mortgage;
+      document.getElementById("title1").innerHTML = `Title - ${m1.Mortgage}`
+      document.getElementById("collapseOneO1").classList.remove("show");
+      document.getElementById("title1").classList.remove("collapsed");
+      document.getElementById("collapseTwoO1").classList.add("show");
+
+      // alert(m1.Mortgage);
+   }   
+}
+
+function getTitleMortgageOption2(){
+   input = mortgageOption2.value; 
+   
+   if(input !== null && input !== '') {
+      m2.Mortgage = input;
+      document.getElementById("mortgageOption2").value = m2.Mortgage;
+      document.getElementById("title2").innerHTML = `Title - ${m2.Mortgage}`
+      document.getElementById("collapseOneO2").classList.remove("show");
+      document.getElementById("title2").classList.remove("collapsed");
+      document.getElementById("collapseTwoO2").classList.add("show");
+   }   
+}

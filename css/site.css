@@ -101,7 +101,7 @@ footer .social:hover{
    color: green;
 }
 
-#subHeading{
+.subHeading{
    letter-spacing: 0.2vmin;
 }
 
@@ -119,8 +119,34 @@ footer .social:hover{
    left: 252px;
 }
 
+#tryItOut>a{
+   text-decoration: none;
+   color: white;
+}
+
+#tryItOut:hover{
+   background-color: darkgreen;
+}
+
+.option{
+   background-color: darkgreen;
+   color: lightgrey;
+}
 
 /* App page */
+#footer-hand-crafted-app-page{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   background-color: teal;
+}
+
+/* Change placeholder font  */
+.form-control::-webkit-input-placeholder {
+   color: rgb(161, 161, 161);
+   font-style: italic;   
+ }
+
 
 /* prism boilerplate */
 code[class*="language-"],
@@ -131,7 +157,9 @@ word-wrap: break-word;
 }
 
 
+
 /* Glow on hover boilerplate */
+/* ------------------------- */
 .glow-on-hover {
    width: 260px;
    height: 50px;
