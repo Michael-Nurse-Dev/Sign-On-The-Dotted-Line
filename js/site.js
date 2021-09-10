@@ -67,18 +67,33 @@ class Mortgage{
 m1 = new Mortgage();
 m2 = new Mortgage();
 
+
+
 function getTitleMortgageOption1(){
    input = mortgageOption1.value; 
    
    if(input !== null && input !== '') {
+
       m1.Mortgage = input;
+
+      //Put the entered value back in the input box.
       document.getElementById("mortgageOption1").value = m1.Mortgage;
+
+      //Append the entered value to the title. 
       document.getElementById("title1").innerHTML = `Title - ${m1.Mortgage}`
+
+      //The arrow toggle for the two sections
+      document.getElementById("title1").classList.add("collapsed");
+      document.getElementById("required1").classList.remove("collapsed");
+
+      //Close current accordian section and open next one
       document.getElementById("collapseOneO1").classList.remove("show");
-      document.getElementById("title1").classList.remove("collapsed");
       document.getElementById("collapseTwoO1").classList.add("show");
 
-      // alert(m1.Mortgage);
+      //Focus on next input box
+      document.getElementById("n-Option1").focus();
+
+
    }   
 }
 
@@ -86,11 +101,24 @@ function getTitleMortgageOption2(){
    input = mortgageOption2.value; 
    
    if(input !== null && input !== '') {
+
       m2.Mortgage = input;
+
+      //Put the entered value back in the input box.
       document.getElementById("mortgageOption2").value = m2.Mortgage;
+
+      //Append the entered value to the title. 
       document.getElementById("title2").innerHTML = `Title - ${m2.Mortgage}`
+
+      //The arrow toggle for the two sections
+      document.getElementById("title2").classList.add("collapsed");
+      document.getElementById("required2").classList.remove("collapsed");
+
+      //Close current accordian section and open next one
       document.getElementById("collapseOneO2").classList.remove("show");
-      document.getElementById("title2").classList.remove("collapsed");
       document.getElementById("collapseTwoO2").classList.add("show");
+
+      //Focus on next input box
+      document.getElementById("n-Option2").focus();
    }   
 }

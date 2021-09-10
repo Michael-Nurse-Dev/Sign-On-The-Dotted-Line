@@ -64,7 +64,9 @@
                
                <!-- Accordian start -->
                <div class="accordion" id="accordionOption1">
-                  <div class="accordion-item">
+                
+                <!-- Title -->
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
                       <button id="title1" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneO1" aria-expanded="true" aria-controls="collapseOneO1">
                         Title
@@ -73,23 +75,68 @@
                     <div id="collapseOneO1" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOption1">
                       <div class="accordion-body">                                 
                         <div class="form-group"></div>
-                        <input type="text" class="form-control" onblur="getTitleMortgageOption1()" name="mortgageOption1Name" id="mortgageOption1" aria-describedby="helpId" placeholder="enter a title for your preferred mortgage option">
+                        <input id="mortgageOption1" type="text" class="form-control" onblur="getTitleMortgageOption1()" name="mortgageOption1Name"  aria-describedby="helpId" placeholder="enter a title for your preferred mortgage option">
                         <small id="helpId" class="ps-1 form-text text-muted"></small>
                       </div>
                     </div>
                   </div>
+                  
+                  <!-- Required -->
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO1" aria-expanded="false" aria-controls="collapseTwoO1">
-                        Required inputs
+                      <button id="required1" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO1" aria-expanded="false" aria-controls="collapseTwoO1">
+                        Required inputs                        
                       </button>
                     </h2>
                     <div id="collapseTwoO1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOption1">
                       <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      <div class="flex-column justify-content-end">
+                        
+                        <strong class="d-block mb-3">You must enter 4 of 5 pieces of information to properly calculate a mortgage</strong> 
+                        
+                        
+                        <!-- Required n -->
+                        <div class="d-flex justify-content-end">
+                        <div class="form-group"></div>             
+                        <input id="n-Option1" type="number" class="form-control numberForm text-end" onblur="get-n-Option1()" name="n-Option1Name" aria-describedby="helpId" placeholder="months to maturity">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>  
+                        </div>
+
+                        <!-- Required pv -->
+                        <div class="d-flex justify-content-end">
+                        <div class="form-group"></div>             
+                        <input id="pv-Option1" type="number" class="form-control numberForm text-end" onblur="get-pv-Option1()" name="pv-Option1Name" aria-describedby="helpId" placeholder="house value">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                        </div>
+
+                        <!-- Required i -->
+                        <div class="d-flex justify-content-end">
+                        <div class="form-group"></div>             
+                        <input id="i-Option1" type="number" class="form-control numberForm text-end" onblur="get-i-Option1()" name="i-Option1Name" aria-describedby="helpId" placeholder="monthly rate">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                        </div>
+
+                        <!-- Required fv -->
+                        <div class="d-flex justify-content-end">
+                        <div class="form-group"></div>             
+                        <input id="fv-Option1" type="number" class="form-control numberForm text-end" onblur="get-fv-Option1()" name="fv-Option1Name" aria-describedby="helpId" placeholder="final value">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                        </div>
+
+                        <!-- Required pmt -->
+                        <div class="d-flex justify-content-end">
+                        <div class="form-group"></div>             
+                        <input id="pmt-Option1" type="number" class="form-control numberForm text-end" onblur="get-pmt-Option1()" name="pmt-Option1Name" aria-describedby="helpId" placeholder="payment">
+                        <small id="helpId" class="ps-1 form-text text-muted"></small>
                       </div>
+                      
+                      </div>
+                      </div>
+
                     </div>
                   </div>
+                  
+                  <!-- Optional -->
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeO1" aria-expanded="false" aria-controls="collapseThreeO1">
@@ -127,7 +174,7 @@
                   </div>
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO2" aria-expanded="false" aria-controls="collapseTwoO2">
+                      <button id="required2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO2" aria-expanded="false" aria-controls="collapseTwoO2">
                         Required inputs
                       </button>
                     </h2>
@@ -201,9 +248,19 @@
    <script src="js/site.js"></script>
 
    <!-- Event listeners  -->
-   <!-- <script>
-      document.getElementById("mortgageOption1").addEventListener("onblur", getTitleMortgageOption1);
-   </script> -->
+   <script>
+      document.getElementById("mortgageOption1").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          getTitleMortgageOption1();
+          }
+      });
+
+      document.getElementById("mortgageOption2").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          getTitleMortgageOption2();
+          }
+      });
+   </script>
 
 
 

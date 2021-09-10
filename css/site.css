@@ -133,7 +133,13 @@ footer .social:hover{
    color: lightgrey;
 }
 
-/* App page */
+.numberForm { 
+   text-align: right; 
+   width: 170px;
+   margin-bottom: 20px;  
+}
+
+/* App page specific */
 #footer-hand-crafted-app-page{
    position: fixed;
    left: 0;
@@ -148,7 +154,7 @@ footer .social:hover{
  }
 
 
-/* prism boilerplate */
+/* Prism boilerplate */
 code[class*="language-"],
 pre[class*="language-"] {
 white-space: pre-wrap;
@@ -156,10 +162,7 @@ word-break: break-all;
 word-wrap: break-word;
 }
 
-
-
 /* Glow on hover boilerplate */
-/* ------------------------- */
 .glow-on-hover {
    width: 260px;
    height: 50px;
@@ -221,4 +224,17 @@ word-wrap: break-word;
    0% { background-position: 0 0; }
    50% { background-position: 400% 0; }
    100% { background-position: 0 0; }
+}
+
+/* Remove number pickers from inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
