@@ -9,71 +9,75 @@ class Mortgage{
 
    //n stands for the number of periods of time. 
    //Commerically speaking, most housing bonds are paid monthly.
-   n = 0;
+   n;
+
 
    //i stands for the interest rate per time period.
    //Typically, banks quote using an a so called 'APR' which 
    //can simply be divided by 12 to get this rate.
    //If the quoted rate is the 'Effective Rate' then you need to work backwards.
    //Commerically speaking, most housing bonds are paid monthly.
-   i = 0.00;
+   i;
 
    //pv stands for the present value of the bond. 
    //This is another way of saying the price of the property including all costs paid by the bank.
-   pv = 0;
+   pv;
    
    //pmt stand for the payment per period to pay off the bond in the contracted time.
-   pmt = 0;
+   pmt;
 
    //fv stands for the future value of the bond. For most housing bonds this is zero as the bond
    //paid off on the final payment. It is possible the bond must be refinanced or the owner must make 
    //a balloon payment then fv will not be zero.
-   fv = 0;
+   fv;
 
    //Are bond payments tax deductible
    taxDeductable = false;
 
    //The deposit you have to invest.
-   deposit = 0;
+   deposit;
 
    //Agents commision, taxes and other buying costs - although paid by the seller this must 
    //not be considered as part of the value of the house 
 
    //The alternative cost of renting
-   rent = 0;
+   rent;
 
    //If you rent and save up - the interest earned
-   interestRateEarnedOnSavings = 0.00;
+   interestRateEarnedOnSavings;
 
    //The cost of insuring a house (not contents).
-   insuranceCostPerAnnum = 0;
+   insuranceCostPerAnnum;
 
    //Maintenance cost of a house regular upkeep;
-   maintenanceCostPerAnnum = 0;
+   maintenanceCostPerAnnum;
 
    //Property taxes
-   propertyTaxesPerAnnum = 0;
+   propertyTaxesPerAnnum;
 
    //Other adjustments per annum.
    //e.g. house may be closer to work meaning less travel costs or vice versa.
-   adustmentAnnualCost = 0;
+   adustmentAnnualCost;
 
    //Long term expected inflation rate - the central bank normally are open about this.
-   inflationLongTermExpectation = 0.00;
+   inflationLongTermExpectation;
 }
 
 // There are two mortgage options
-// We will call them m1 and m2 to keep code short.
+// We will call the data models m1 and m2 to keep code 
+// short and easier to parse.
 m1 = new Mortgage();
 m2 = new Mortgage();
 
 
-
+// Option 1 - title complete
 function getTitleMortgageOption1(){
-   input = mortgageOption1.value; 
+
+   
+   input = document.getElementById("mortgageOption1").value; 
    
    if(input !== null && input !== '') {
-
+      
       m1.Mortgage = input;
 
       //Put the entered value back in the input box.
@@ -91,12 +95,126 @@ function getTitleMortgageOption1(){
       document.getElementById("collapseTwoO1").classList.add("show");
 
       //Focus on next input box
-      document.getElementById("n-Option1").focus();
-
-
+      document.getElementById("pv-Option1").focus();
    }   
 }
 
+//Option 1 - pv
+function getPvOption1(){
+   input = document.getElementById("pv-Option1").value;
+   if (input !== "") {
+      m1.pv = input;
+   }
+   input.value = "";
+   document.getElementById("displayO1pv").innerHTML = m1.pv.toString();
+   checkMortgageInputsOption1();
+}
+
+//Option 1 - i
+function getIOption1(){
+   input = document.getElementById("i-Option1").value;
+   if (input !== "") {
+      m1.i = input;
+   }
+   input.value = "";
+   document.getElementById("displayO1i").innerHTML = m1.i.toString();
+   checkMortgageInputsOption1();
+}
+
+//Option 1 - n
+function getNOption1(){
+   input = document.getElementById("n-Option1").value;
+   if (input !== "") {
+      m1.n = input;
+   }
+   input.value = "";
+   document.getElementById("displayO1n").innerHTML = m1.n.toString();
+   checkMortgageInputsOption1();
+}
+
+//Option 1 - fv
+function getFvOption1(){
+   input = document.getElementById("fv-Option1").value;
+   if (input !== "") {
+      m1.fv = input;
+   }
+   input.value = "";
+   document.getElementById("displayO1fv").innerHTML = m1.fv.toString();
+   checkMortgageInputsOption1();
+}
+
+//Option 1 - pmt
+function getPmtOption1(){
+   input = document.getElementById("pmt-Option1").value;
+   if (input !== "") {
+      m1.pmt = input;
+   }
+   input.value = "";
+   document.getElementById("displayO1pmt").innerHTML = m1.pmt.toString();
+   checkMortgageInputsOption1();
+}
+
+
+//In the accordion only four values are entered. The fifth one triggers
+//the calcualtion of the missing value. This is because the five values
+//are tied together mathematically. It is important control in ensuring
+//the correct outputs to calculate the final value.
+function checkMortgageInputsOption1(){
+   
+   let counter = 0;
+
+   // alert("checking");
+
+   if(m1.pv  !== 0 && m1.pv  !== null) {counter+= 1};
+   if(m1.i   !== 0 && m1.i   !== null) {counter+= 1};
+   if(m1.n   !== 0 && m1.n   !== null) {counter+= 1};
+   if(m1.fv  !== 0 && m1.fv  !== null) {counter+= 1};
+   if(m1.pmt !== 0 && m1.pmt !== null) {counter+= 1};
+
+   document.getElementById("required1").value = $`@@@GTD@@@Required inputs: {counter} of 4`;
+   
+   // let abc = 1; //debug
+
+
+
+   if (counter === 4) {
+      // alert("4 has been reached!!!!");
+      calculateMissingValue(m1);
+   }
+}
+
+//The parameter is a mortgage object.
+function calculateMissingValue(m){  
+
+   if (m.pv === null || m.pv === 0) {
+      // alert("pv is null");
+      
+      //Formula: 
+      m.pv = ((m.n * m.pmt) - m.fv)*(1 / Math.pow((1 + (m.i / 100)), m.n)); 
+      document.getElementById("pv-Option1").innerHTML = $`{m.pv}`;
+   }
+   else if (m.i === null || m.i === 0) {
+      alert("i is null");
+   }
+   else if (m.n === null || m.n === 0) {
+      alert("n is null");
+   }
+   else if (m.fv === null || m.fv === 0) {
+      alert("fv is null");
+   }
+   else if (m.pmt === null || m.pmt === 0) {
+      alert("pmt is null");
+   }
+   else{
+      alert("Error trace number: 239fg9wfh032hf03");
+   }
+
+}
+
+
+
+
+// Option 2 - title complete
 function getTitleMortgageOption2(){
    input = mortgageOption2.value; 
    

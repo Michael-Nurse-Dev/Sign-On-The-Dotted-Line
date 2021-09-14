@@ -147,6 +147,12 @@ footer .social:hover{
    background-color: teal;
 }
 
+.displyMortgageInput{
+   margin-top: 8px;
+   margin-right: 28px;
+   font-weight: bold;
+}
+
 /* Change placeholder font  */
 .form-control::-webkit-input-placeholder {
    color: rgb(161, 161, 161);

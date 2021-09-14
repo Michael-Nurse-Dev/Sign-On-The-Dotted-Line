@@ -85,49 +85,55 @@
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                       <button id="required1" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO1" aria-expanded="false" aria-controls="collapseTwoO1">
-                        Required inputs                        
+                        Required inputs - 0 of 4                        
                       </button>
                     </h2>
                     <div id="collapseTwoO1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionOption1">
                       <div class="accordion-body">
                       <div class="flex-column justify-content-end">
-                        
+                      
                         <strong class="d-block mb-3">You must enter 4 of 5 pieces of information to properly calculate a mortgage</strong> 
                         
                         
-                        <!-- Required n -->
-                        <div class="d-flex justify-content-end">
-                        <div class="form-group"></div>             
-                        <input id="n-Option1" type="number" class="form-control numberForm text-end" onblur="get-n-Option1()" name="n-Option1Name" aria-describedby="helpId" placeholder="months to maturity">
-                        <small id="helpId" class="ps-1 form-text text-muted"></small>  
-                        </div>
-
+                        
                         <!-- Required pv -->
                         <div class="d-flex justify-content-end">
-                        <div class="form-group"></div>             
-                        <input id="pv-Option1" type="number" class="form-control numberForm text-end" onblur="get-pv-Option1()" name="pv-Option1Name" aria-describedby="helpId" placeholder="house value">
-                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                          <div  id="displayO1pv" class="displyMortgageInput">-</div>
+                          <div class="form-group"></div>          
+                          <input id="pv-Option1" type="number" class="form-control numberForm text-end" onblur="getPvOption1()" name="pv-Option1Name" aria-describedby="helpId" placeholder="present value">
+                          <small id="helpIdO1pv" class="ps-1 form-text text-muted"></small>
                         </div>
-
+                        
                         <!-- Required i -->
                         <div class="d-flex justify-content-end">
-                        <div class="form-group"></div>             
-                        <input id="i-Option1" type="number" class="form-control numberForm text-end" onblur="get-i-Option1()" name="i-Option1Name" aria-describedby="helpId" placeholder="monthly rate">
-                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                          <div  id="displayO1i" class="displyMortgageInput">-</div>
+                          <div class="form-group"></div>
+                          <input id="i-Option1" type="number" class="form-control numberForm text-end" onblur="getIOption1()" name="i-Option1Name" aria-describedby="helpId" placeholder="rate">
+                          <small id="helpIdO1i" class="ps-1 form-text text-muted"></small>
                         </div>
-
-                        <!-- Required fv -->
+                        
+                        <!-- Required n -->
                         <div class="d-flex justify-content-end">
+                          <div  id="displayO1n"class="displyMortgageInput">-</div>
+                          <div class="form-group"></div>             
+                          <input id="n-Option1" type="number" class="form-control numberForm text-end" onblur="getNOption1()" name="n-Option1Name" aria-describedby="helpId" placeholder="number of periods">
+                        <small id="helpIdO1pvn" class="ps-1 form-text text-muted"></small>  
+                      </div>
+                      
+                      <!-- Required fv -->
+                      <div class="d-flex justify-content-end">
+                        <div  id="displayO1fv" class="displyMortgageInput">-</div>
                         <div class="form-group"></div>             
-                        <input id="fv-Option1" type="number" class="form-control numberForm text-end" onblur="get-fv-Option1()" name="fv-Option1Name" aria-describedby="helpId" placeholder="final value">
-                        <small id="helpId" class="ps-1 form-text text-muted"></small>
-                        </div>
-
-                        <!-- Required pmt -->
-                        <div class="d-flex justify-content-end">
+                        <input id="fv-Option1" type="number" class="form-control numberForm text-end" onblur="getFvOption1()" name="fv-Option1Name" aria-describedby="helpId" placeholder="final value">
+                        <small id="helpIdO1fv" class="ps-1 form-text text-muted"></small>
+                      </div>
+                      
+                      <!-- Required pmt -->
+                      <div class="d-flex justify-content-end">
+                        <div id="displayO1pmt" class="displyMortgageInput">-</div>
                         <div class="form-group"></div>             
-                        <input id="pmt-Option1" type="number" class="form-control numberForm text-end" onblur="get-pmt-Option1()" name="pmt-Option1Name" aria-describedby="helpId" placeholder="payment">
-                        <small id="helpId" class="ps-1 form-text text-muted"></small>
+                        <input id="pmt-Option1" type="number" class="form-control numberForm text-end" onblur="getPmtOption1()" name="pmt-Option1Name" aria-describedby="helpId" placeholder="payment">
+                        <small id="helpIdO1pmt" class="ps-1 form-text text-muted"></small>
                       </div>
                       
                       </div>
@@ -247,14 +253,56 @@
    </script>
    <script src="js/site.js"></script>
 
-   <!-- Event listeners  -->
+   <!-- Event listeners - enter key  -->
    <script>
+      //Option 1 - title
       document.getElementById("mortgageOption1").addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
           getTitleMortgageOption1();
           }
       });
 
+      // Option 1 - pv
+      document.getElementById("pv-Option1").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("i-Option1").focus();
+          getPvOption1();
+          }
+      });
+
+      // Option 1 - i
+      document.getElementById("i-Option1").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("n-Option1").focus(); 
+          getIOption1();
+          }
+      });
+
+      // Option 1 - n
+      document.getElementById("n-Option1").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("fv-Option1").focus();
+          getNOption1();
+          }
+      });
+
+      // Option 1 - fv
+      document.getElementById("fv-Option1").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          document.getElementById("pmt-Option1").focus();
+          getFvOption1();
+          }
+      });
+
+      // Option 1 - pmt
+      document.getElementById("pmt-Option1").addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {          
+          //needs to call something to check input and operate accordion
+          getPmtOption1();
+          }
+      });      
+
+      //Option 2 - title
       document.getElementById("mortgageOption2").addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
           getTitleMortgageOption2();
