@@ -1,7 +1,7 @@
 //Holds mortage bond details and returns time value of money calculations.
 class Mortgage{
    
-   mortgageOption = "Enter a name for this option"
+   mortgageOption;
 
    //The names of n, i, pv, pmt and fv are universal in the finance world.
    //For ease of parsing the code we will use them here. Other names will follow
@@ -102,10 +102,10 @@ function getTitleMortgageOption1(){
 //Option 1 - pv
 function getPvOption1(){
    input = document.getElementById("pv-Option1").value;
-   if (input !== "") {
+   if (input !== "" || input != 0) {
       m1.pv = input;
    }
-   input.value = "";
+   document.getElementById("pv-Option1").value = "";
    document.getElementById("displayO1pv").innerHTML = m1.pv.toString();
    checkMortgageInputsOption1();
 }
@@ -113,10 +113,10 @@ function getPvOption1(){
 //Option 1 - i
 function getIOption1(){
    input = document.getElementById("i-Option1").value;
-   if (input !== "") {
+   if (input !== "" || input != 0) {
       m1.i = input;
    }
-   input.value = "";
+   document.getElementById("i-Option1").value = "";
    document.getElementById("displayO1i").innerHTML = m1.i.toString();
    checkMortgageInputsOption1();
 }
@@ -124,10 +124,10 @@ function getIOption1(){
 //Option 1 - n
 function getNOption1(){
    input = document.getElementById("n-Option1").value;
-   if (input !== "") {
+   if (input !== "" || input != 0) {
       m1.n = input;
    }
-   input.value = "";
+   document.getElementById("n-Option1").value = "";
    document.getElementById("displayO1n").innerHTML = m1.n.toString();
    checkMortgageInputsOption1();
 }
@@ -135,10 +135,10 @@ function getNOption1(){
 //Option 1 - fv
 function getFvOption1(){
    input = document.getElementById("fv-Option1").value;
-   if (input !== "") {
+   if (input !== "" || input != 0) {
       m1.fv = input;
    }
-   input.value = "";
+   document.getElementById("fv-Option1").value = "";
    document.getElementById("displayO1fv").innerHTML = m1.fv.toString();
    checkMortgageInputsOption1();
 }
@@ -146,10 +146,10 @@ function getFvOption1(){
 //Option 1 - pmt
 function getPmtOption1(){
    input = document.getElementById("pmt-Option1").value;
-   if (input !== "") {
+   if (input !== "" || input != 0) {
       m1.pmt = input;
    }
-   input.value = "";
+   document.getElementById("pmt-Option1").value = "";
    document.getElementById("displayO1pmt").innerHTML = m1.pmt.toString();
    checkMortgageInputsOption1();
 }
@@ -161,54 +161,60 @@ function getPmtOption1(){
 //the correct outputs to calculate the final value.
 function checkMortgageInputsOption1(){
    
-   let counter = 0;
+   let counter = 0;  
 
-   // alert("checking");
+   if((m1.i   != 0) && (m1.i   !== undefined)) {counter += 1};
+   if((m1.n   != 0) && (m1.n   !== undefined)) {counter += 1};
+   if((m1.fv  != 0) && (m1.fv  !== undefined)) {counter += 1};
+   if((m1.pmt != 0) && (m1.pmt !== undefined)) {counter += 1};
+   if((m1.pv  != 0) && (m1.pv  !== undefined)) {counter += 1};
 
-   if(m1.pv  !== 0 && m1.pv  !== null) {counter+= 1};
-   if(m1.i   !== 0 && m1.i   !== null) {counter+= 1};
-   if(m1.n   !== 0 && m1.n   !== null) {counter+= 1};
-   if(m1.fv  !== 0 && m1.fv  !== null) {counter+= 1};
-   if(m1.pmt !== 0 && m1.pmt !== null) {counter+= 1};
+   // alert("checked " + counter);
+   document.getElementById("required1").outerHTML = `<button id="required1" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoO1" aria-expanded="false" aria-controls="collapseTwoO1">
+   Required inputs - ${counter} of 4 completed    
+   </button>`
 
-   document.getElementById("required1").value = $`@@@GTD@@@Required inputs: {counter} of 4`;
-   
-   // let abc = 1; //debug
-
-
-
-   if (counter === 4) {
+   if (counter == 4) {
       // alert("4 has been reached!!!!");
       calculateMissingValue(m1);
    }
 }
 
 //The parameter is a mortgage object.
-function calculateMissingValue(m){  
+function calculateMissingValue(m){
 
-   if (m.pv === null || m.pv === 0) {
-      // alert("pv is null");
+   if (m.pv === undefined || m.pv == 0) {
       
       //Formula: 
-      m.pv = ((m.n * m.pmt) - m.fv)*(1 / Math.pow((1 + (m.i / 100)), m.n)); 
-      document.getElementById("pv-Option1").innerHTML = $`{m.pv}`;
+      m.pv = ((m.n * m.pmt) - m.fv)*(1 / Math.pow((1 + (m.i / 100)), m.n));
+      
+      document.getElementById("displayO1pv").innerHTML = `${m.pv}`;
    }
-   else if (m.i === null || m.i === 0) {
-      alert("i is null");
+   else if (m.i === undefined || m.i == 0) {
+      alert("i is undefined");
    }
-   else if (m.n === null || m.n === 0) {
-      alert("n is null");
+   else if (m.n === undefined || m.n == 0) {
+      alert("n is undefined");
    }
-   else if (m.fv === null || m.fv === 0) {
-      alert("fv is null");
+   else if (m.fv === undefined || m.fv == 0) {
+      alert("fv is undefined");
    }
-   else if (m.pmt === null || m.pmt === 0) {
-      alert("pmt is null");
+   else if (m.pmt === undefined || m.pmt == 0) {
+      alert("pmt is undefined");
    }
    else{
-      alert("Error trace number: 239fg9wfh032hf03");
+      alert("Blowthrough error. Trace number 239fg9wfh032hf03.");
    }
+}
 
+function toggleInputFieldsAndEditButton(){
+   
+
+   
+   if (document.getElementById("pv-Option1").disabled == false) {
+      
+   }
+      
 }
 
 
