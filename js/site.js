@@ -186,11 +186,10 @@ function calculateMissingValue(m){
    if (m.pv === undefined || m.pv == 0) {
       
       //Formula: 
-      m.pv = ((m.n * m.pmt) - m.fv)*(1 / Math.pow((1 + (m.i / 100)), m.n));
-      
+      m.pv = ((m.n * m.pmt) - m.fv)*(1 / Math.pow((1 + (m.i / 100)), m.n));      
       document.getElementById("displayO1pv").innerHTML = `${m.pv}`;
    }
-   else if (m.i === undefined || m.i == 0) {
+   else if (m.i === undefined || m.i == 0) {      
       alert("i is undefined");
    }
    else if (m.n === undefined || m.n == 0) {
